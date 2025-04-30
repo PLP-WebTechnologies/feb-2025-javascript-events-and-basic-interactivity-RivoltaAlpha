@@ -32,21 +32,28 @@ const heroes = [
   ];
   
   // Event Handling for Summoning a Hero
+  const summonSound = new Audio('https://www.fesliyanstudios.com/play-mp3/387'); // Example sound
+
   document.getElementById("summonBtn").addEventListener("click", () => {
     const hero = heroes[Math.floor(Math.random() * heroes.length)];
     document.getElementById("heroContainer").innerHTML = `
-      <h3>${hero.name}</h3>
-      <img src="${hero.image}" alt="${hero.name}" />
-      <p class="power">Power: ${hero.power}</p>
+      <div class="character-box">
+        <h3>${hero.name}</h3>
+        <img src="${hero.image}" alt="${hero.name}" />
+        <p class="power">Power: ${hero.power}</p>
+      </div>
     `;
+    summonSound.play();
   });
+  
   
   // Image Slideshow (auto change every 3 sec)
   const slideshowImages = [
     "https://img.freepik.com/free-photo/illustration-anime-city_23-2151779683.jpg?uid=R154664640&semt=ais_hybrid&w=740",
     "https://img.freepik.com/premium-photo/fight-samurai-robot-dojo-sci-fi-action-scene-illustration-digital-painting_37402-1224.jpg?w=996",
     "https://img.freepik.com/free-photo/anime-style-character-with-fire_23-2151152178.jpg?uid=R154664640&semt=ais_hybrid&w=740",
-    "https://img.freepik.com/free-photo/illustration-anime-character-rain_23-2151394669.jpg?uid=R154664640&semt=ais_hybrid&w=740"
+    "https://img.freepik.com/free-photo/illustration-anime-character-rain_23-2151394669.jpg?uid=R154664640&semt=ais_hybrid&w=740",
+    "https://img.freepik.com/premium-photo/female-hunter-with-bow-battlefield-digital-art-style-illustration-painting_37402-459.jpg?uid=R154664640&semt=ais_hybrid&w=740",
   ];
   let slideIndex = 0;
   setInterval(() => {
@@ -116,7 +123,6 @@ document.getElementById("submitGuess").addEventListener("click", () => {
     document.getElementById("resultMessage").textContent = "❗ Start the game first!";
     return;
   }
-
   if (userGuess === selectedCharacter) {
     document.getElementById("resultMessage").textContent = "🎉 Correct! You guessed the hero!";
   } else {
@@ -127,7 +133,7 @@ document.getElementById("submitGuess").addEventListener("click", () => {
 // Reset game
 document.getElementById("resetGame").addEventListener("click", () => {
   selectedCharacter = "";
-  document.getElementById("gameMessage").textContent = "Guess the character!";
+  document.getElementById("gameMessage").textContent = "Try guessing the character again!";
   document.getElementById("resultMessage").textContent = "";
   document.getElementById("guessInput").value = "";
 });

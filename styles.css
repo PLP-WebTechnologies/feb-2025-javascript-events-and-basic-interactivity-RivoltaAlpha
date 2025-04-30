@@ -138,11 +138,24 @@ body {
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-.tab-content {
-    display: none; /* Hide all tab content by default */
-  }
-  
+}  
   .tab-content.active {
     display: block; /* Show the active tab content */
   }
+  .tab-content {
+    display: none;
+    padding: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+    .form-section {
+      max-width: 100%;
+    }
+    .guessInput {
+      width: 100%;
+    }
+  }
+  
