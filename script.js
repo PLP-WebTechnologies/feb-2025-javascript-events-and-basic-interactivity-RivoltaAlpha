@@ -43,9 +43,10 @@ const heroes = [
   
   // Image Slideshow (auto change every 3 sec)
   const slideshowImages = [
-    "https://th.bing.com/th/id/OIP.zLMYPtWtnYrvXSrlhjpwKQHaEJ?w=320&h=180&c=7&r=0&o=5&pid=1.7",
-    "https://th.bing.com/th/id/OIP.EXpVEeFlU3fKXUg-fNhfGAHaEK?w=291&h=180&c=7&r=0&o=5&pid=1.7",
-    "https://th.bing.com/th/id/OIP.G6c56dhN4Hibr6LouQuC8gHaEK?w=299&h=180&c=7&r=0&o=5&pid=1.7"
+    "https://img.freepik.com/free-photo/illustration-anime-city_23-2151779683.jpg?uid=R154664640&semt=ais_hybrid&w=740",
+    "https://img.freepik.com/premium-photo/fight-samurai-robot-dojo-sci-fi-action-scene-illustration-digital-painting_37402-1224.jpg?w=996",
+    "https://img.freepik.com/free-photo/anime-style-character-with-fire_23-2151152178.jpg?uid=R154664640&semt=ais_hybrid&w=740",
+    "https://img.freepik.com/free-photo/illustration-anime-character-rain_23-2151394669.jpg?uid=R154664640&semt=ais_hybrid&w=740"
   ];
   let slideIndex = 0;
   setInterval(() => {
@@ -95,4 +96,40 @@ const heroes = [
   
     document.getElementById("formFeedback").innerText = message;
   });
+
+  // Guess the Character Game
+const characters = heroes.map(h => h.name.toLowerCase());
+let selectedCharacter = "";
+
+document.getElementById("gameBtn").addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * characters.length);
+  selectedCharacter = characters[randomIndex];
+  document.getElementById("gameMessage").textContent = "Guess the character!";
+  document.getElementById("resultMessage").textContent = "";
+  document.getElementById("guessInput").value = "";
+});
+
+// Handle guess submission
+document.getElementById("submitGuess").addEventListener("click", () => {
+  const userGuess = document.getElementById("guessInput").value.trim().toLowerCase();
+  if (!selectedCharacter) {
+    document.getElementById("resultMessage").textContent = "❗ Start the game first!";
+    return;
+  }
+
+  if (userGuess === selectedCharacter) {
+    document.getElementById("resultMessage").textContent = "🎉 Correct! You guessed the hero!";
+  } else {
+    document.getElementById("resultMessage").textContent = "❌ Incorrect. Try again!";
+  }
+});
+
+// Reset game
+document.getElementById("resetGame").addEventListener("click", () => {
+  selectedCharacter = "";
+  document.getElementById("gameMessage").textContent = "Guess the character!";
+  document.getElementById("resultMessage").textContent = "";
+  document.getElementById("guessInput").value = "";
+});
+
   

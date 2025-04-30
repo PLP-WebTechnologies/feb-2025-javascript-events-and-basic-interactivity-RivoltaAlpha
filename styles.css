@@ -83,7 +83,6 @@ body {
     gap: 200px;
     padding: 10px;
     max-width: 1200px;
-    max-height: 800px;
     margin: auto;
     justify-items: center;
 }
@@ -110,17 +109,27 @@ body {
     font-size: 1rem;
     color: #333;
 }
+.guessInput {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #333;
+}
 .slideshow {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1a1a40;
+    background-color: #020224;
     text-align: center;
     height: auto;
-    padding: 1.5rem;
+    padding: 20px;
+    margin: 20px auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
     transition: transform 0.3s ease;
